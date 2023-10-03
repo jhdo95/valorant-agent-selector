@@ -24,17 +24,24 @@ export function logOut() {
 }
 
 export function getToken() {
-  // getItem will return null if the key does not exists
+  // getItem will return null if the key does not exist
   const token = localStorage.getItem('token');
   if (!token) return null;
-  const payload = JSON.parse(atob(token.split('.')[1]));
-  // A JWT's exp is expressed in seconds, not miliseconds
-  if (payload.exp * 1000 < Date.now()) {
-    // Token has expired
-    localStorage.removeItem('token');
+
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    // A JWT's exp is expressed in seconds, not milliseconds
+    if (payload.exp * 1000 < Date.now()) {
+      // Token has expired
+      localStorage.removeItem('token');
+      return null;
+    }
+    return token;
+  } catch (error) {
+    console.error('Error decoding token:', error);
+    localStorage.removeItem('token'); // Remove the invalid token
     return null;
   }
-  return token;
 }
 
 export function getUser() {
