@@ -31,6 +31,14 @@ export default function ValorantAgents() {
           <h3>{agent.displayName}</h3>
           <p>{agent.description}</p>
           <img src={agent.displayIcon} alt={agent.displayName} />
+          <h4>Abilities:</h4>
+          <ul>
+            {agent.abilities.map((ability, index) => (
+              <li key={index}>
+                <strong>{ability.displayName}:</strong> {ability.description}
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
