@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
+const axios = require('axios');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 // Always require and configure near the top
@@ -11,6 +13,7 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cors());
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
@@ -24,6 +27,7 @@ const port = process.env.PORT || 3001;
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/quizzes', require('./routes/api/quizzes'));
+app.use('/api/valorant', require('./routes/api/valorant') )
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests

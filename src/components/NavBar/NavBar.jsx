@@ -13,6 +13,8 @@ export default function NavBar({ user, setUser }) {
       &nbsp; | &nbsp;
       <Link to="/quiz">Valorant Agent Selector Quiz</Link>
       &nbsp; | &nbsp;
+      <Link to="/agents">All Agents</Link>
+      &nbsp; | &nbsp;
       <Link to="" onClick={handleLogOut}>Log Out</Link>
     </nav>
   );

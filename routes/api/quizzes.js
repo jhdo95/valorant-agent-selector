@@ -3,8 +3,10 @@ const router = express.Router();
 const quizzesCtrl = require('../../controllers/api/quizzes');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
-// router.get('/questions', quizzesCtrl.getQuestions);
-// router.post('/calculate', quizzesCtrl.calculateRecommendations);
+// All paths start with '/api/quizzes'
+router.get('/questions', quizzesCtrl.index);
+router.post('/questions', ensureLoggedIn, quizzesCtrl.create)
+router.post('/calculate', quizzesCtrl.calcRecommendations);
 
 
 module.exports = router;
