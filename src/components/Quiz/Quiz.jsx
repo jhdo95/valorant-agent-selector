@@ -51,31 +51,7 @@ export default function Quiz({ quizData, currentQuestion, onAnswer, onNext, onPr
     };
     return (
         <div>
-          <h2>{question.question}</h2>
-          <div>
-            {question.choices.map((choice, index) => (
-              <div key={index}>
-                <label>
-                  <input
-                    type="radio"
-                    name="answer"
-                    value={choice.text}
-                    checked={selectedAnswer === choice}
-                    onChange={() => onAnswer(question, choice)}
-                  />
-                  {choice.text}
-                </label>
-              </div>
-            ))}
-          </div>
-          <button onClick={onPrevious} disabled={currentQuestion === 0}>
-            Previous
-          </button>
-          <button onClick={currentQuestion === quizData.length - 1 ? handleFinish : onNext}>
-            {currentQuestion === quizData.length - 1 ? 'Finish' : 'Next'}
-          </button>
-      
-          {recommendedAgent && (
+          {recommendedAgent ? (
             <div>
               <h3>Recommended Agent</h3>
               <p>Name: {recommendedAgent.displayName}</p>
@@ -88,11 +64,37 @@ export default function Quiz({ quizData, currentQuestion, onAnswer, onNext, onPr
                     <p>Ability {index + 1}:</p>
                     <p>{ability.displayName}</p>
                     <p>Description: {ability.description}</p>
-                    {/* You can add the ability icon here if available */}
                     {ability.displayIcon && <img src={ability.displayIcon} alt={ability.displayName} />}
                   </li>
                 ))}
               </ul>
+              <button onClick={() => setRecommendedAgent(null)}>Pick Another Agent</button>
+            </div>
+          ) : (
+            <div>
+              <h2>{question.question}</h2>
+              <div>
+                {question.choices.map((choice, index) => (
+                  <div key={index}>
+                    <label>
+                      <input
+                        type="radio"
+                        name="answer"
+                        value={choice.text}
+                        checked={selectedAnswer === choice}
+                        onChange={() => onAnswer(question, choice)}
+                      />
+                      {choice.text}
+                    </label>
+                  </div>
+                ))}
+              </div>
+              <button onClick={onPrevious} disabled={currentQuestion === 0}>
+                Previous
+              </button>
+              <button onClick={currentQuestion === quizData.length - 1 ? handleFinish : onNext}>
+                {currentQuestion === quizData.length - 1 ? 'Finish' : 'Next'}
+              </button>
             </div>
           )}
         </div>
