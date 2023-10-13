@@ -43,7 +43,6 @@ export default function QuizPage() {
         console.log('Updated role points:', updatedRolePoints);
     
         setRolePoints(updatedRolePoints);
-         // Add the question to the list of answered questions
         setAnsweredQuestions([...answeredQuestions, question]);
     };
 
@@ -51,10 +50,9 @@ export default function QuizPage() {
         if (currentQuestion < quizData.length - 1) {
           setCurrentQuestion(currentQuestion + 1);
         } else {
-          setQuizCompleted(true); // Set the quiz completion status to true
+          setQuizCompleted(true); 
           console.log('User Answers:', answers);
           console.log('Role Points:', rolePoints);
-          // Set the selected role based on the role with the maximum points
           const maxRole = Object.keys(rolePoints).reduce((a, b) =>
             rolePoints[a] > rolePoints[b] ? a : b
           );
