@@ -5,10 +5,10 @@
       {
         "text": "Aggressive and looking for eliminations",
         "rolePoints": {
-          "initiator": 1,
+          "initiator": 0,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 0
+          "duelist": 1
         }
       },
       {
@@ -32,10 +32,10 @@
       {
         "text": "Versatile and adapting to the situation",
         "rolePoints": {
-          "initiator": 0,
+          "initiator": 1,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 1
+          "duelist": 0
         }
       }
     ]
@@ -46,10 +46,10 @@
       {
         "text": "Rush in head-on, taking on multiple enemies",
         "rolePoints": {
-          "initiator": 1,
+          "initiator": 0,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 0
+          "duelist": 1
         }
       },
       {
@@ -73,10 +73,10 @@
       {
         "text": "Change tactics based on the situation",
         "rolePoints": {
-          "initiator": 0,
+          "initiator": 1,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 1
+          "duelist": 0
         }
       }
     ]
@@ -87,10 +87,10 @@
       {
         "text": "Slayer, focused on getting eliminations",
         "rolePoints": {
-          "initiator": 1,
+          "initiator": 0,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 0
+          "duelist": 1
         }
       },
       {
@@ -114,10 +114,10 @@
       {
         "text": "Flex player, adapting as needed",
         "rolePoints": {
-          "initiator": 0,
+          "initiator": 1,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 1
+          "duelist": 0
         }
       }
     ]
@@ -128,10 +128,10 @@
       {
         "text": "Embrace it and look for opportunities to shine",
         "rolePoints": {
-          "initiator": 1,
+          "initiator": 0,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 0
+          "duelist": 1
         }
       },
       {
@@ -155,10 +155,10 @@
       {
         "text": "Quickly adjust your strategy to overcome challenges",
         "rolePoints": {
-          "initiator": 0,
+          "initiator": 1,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 1
+          "duelist": 0
         }
       }
     ]
@@ -169,10 +169,10 @@
       {
         "text": "High-damage rifles and shotguns",
         "rolePoints": {
-          "initiator": 1,
+          "initiator": 0,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 0
+          "duelist": 1
         }
       },
       {
@@ -196,10 +196,10 @@
       {
         "text": "Versatile weapons that suit different situations",
         "rolePoints": {
-          "initiator": 0,
+          "initiator": 1,
           "controller": 0,
           "sentinel": 0,
-          "duelist": 1
+          "duelist": 0
         }
       }
     ]

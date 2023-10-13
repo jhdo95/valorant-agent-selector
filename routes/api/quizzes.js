@@ -5,7 +5,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // All paths start with '/api/quizzes'
 router.get('/questions', quizzesCtrl.index);
-router.post('/calculate', quizzesCtrl.calcRecommendations);
+router.post('/calcRecommendations', quizzesCtrl.calcRecommendations);
 
 
 module.exports = router;

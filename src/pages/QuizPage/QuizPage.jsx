@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Quiz from '../../components/Quiz/Quiz';
 import quizData from '../../data/quizQuestions.json';
+import RecommendedAgent from '../../components/RecommendedAgent/RecommendedAgent';
 
 export default function QuizPage() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -12,6 +13,8 @@ export default function QuizPage() {
         duelist: 0,
     });
     const [answeredQuestions, setAnsweredQuestions] = useState([]); // New state to keep track of answered questions
+    const [selectedRole, setSelectedRole] = useState(null);
+    const [quizCompleted, setQuizCompleted] = useState(false); // New state to track quiz completion
 
     const handleAnswer = (question, answer) => {
         if (answeredQuestions.includes(question)) {
@@ -46,12 +49,19 @@ export default function QuizPage() {
 
     const handleNext = () => {
         if (currentQuestion < quizData.length - 1) {
-            setCurrentQuestion(currentQuestion + 1);
+          setCurrentQuestion(currentQuestion + 1);
         } else {
-            console.log('User Answers:', answers);
-            console.log('Role Points:', rolePoints);
+          setQuizCompleted(true); // Set the quiz completion status to true
+          console.log('User Answers:', answers);
+          console.log('Role Points:', rolePoints);
+          // Set the selected role based on the role with the maximum points
+          const maxRole = Object.keys(rolePoints).reduce((a, b) =>
+            rolePoints[a] > rolePoints[b] ? a : b
+          );
+          setSelectedRole(maxRole);
         }
-    };
+      };
+
     const handlePrevious = () => {
         if (currentQuestion > 0) {
             setCurrentQuestion(currentQuestion - 1);
@@ -60,20 +70,24 @@ export default function QuizPage() {
 
     return (
         <div>
-            <div>
-                {quizData.length > 0 ? (
-                    <Quiz
-                        quizData={quizData}
-                        currentQuestion={currentQuestion}
-                        onAnswer={handleAnswer}
-                        onNext={handleNext}
-                        onPrevious={handlePrevious} // Make sure to pass the handlePrevious function to the Quiz component
-                        answers={answers}
-                    />
-                ) : (
-                    <p>No questions available.</p>
-                )}
-            </div>
+          <div>
+            {quizData.length > 0 ? (
+              !quizCompleted ? ( 
+                <Quiz
+                  quizData={quizData}
+                  currentQuestion={currentQuestion}
+                  onAnswer={handleAnswer}
+                  onNext={handleNext}
+                  onPrevious={handlePrevious}
+                  answers={answers}
+                />
+              ) : (
+                selectedRole && <RecommendedAgent role={selectedRole} />
+              )
+            ) : (
+              <p>No questions available.</p>
+            )}
+          </div>
         </div>
-    );
-}
+      );
+    }

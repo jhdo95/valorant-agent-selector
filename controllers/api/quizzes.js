@@ -18,36 +18,73 @@ async function index(req, res) {
   }
 
 
-    async function fetchAgentsByRole(role) {
+  async function fetchAgentsByRole(role) {
+    try {
+        const response = await axios.get(VALORANT_AGENT_API_ENDPOINT);
+        const allAgents = response.data?.data; // Check if the data property exists
+
+        if (!Array.isArray(allAgents)) {
+            throw new Error('Data fetched is not an array');
+        }
+
+        const agentsInRole = allAgents.filter((agent) => {
+            return agent.role && agent.role.displayName.toLowerCase() === role.toLowerCase();
+        });
+
+        if (agentsInRole.length === 0) {
+            throw new Error(`No agents found for the role: ${role}`);
+        }
+        
+        return agentsInRole;
+    } catch (error) {
+        console.error('Error fetching Valorant agent data:', error);
+        throw new Error('Error fetching Valorant agent data');
+    }
+}
+    
+async function calcRecommendations(req, res) {
+    const { role } = req.body;
+  
+    try {
+      const agents = await fetchAgentsByRole(role);
+  
+      if (agents.length === 0) {
+        throw new Error(`No agents found for the role: ${role}`);
+      }
+  
+      const recommendedAgent = agents[Math.floor(Math.random() * agents.length)];
+  
+      res.json(recommendedAgent);
+    } catch (error) {
+      console.error('Error calculating recommendations:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+    async function determineRecommendedAgent(rolePoints) {
+        let maxRole = '';
+        let maxPoints = 0;
+    
+        Object.keys(rolePoints).forEach((role) => {
+            if (rolePoints[role] > maxPoints) {
+                maxPoints = rolePoints[role];
+                maxRole = role;
+            }
+        });
+    
         try {
-            // Make an HTTP GET request to the Valorant agent API endpoint
-            const response = await axios.get(VALORANT_AGENT_API_ENDPOINT);
-            const allAgents = response.data; // Contains data on all Valorant agents
-            
-            // Filter agents based on the specified role
-            const agentsInRole = allAgents.filter((agent) => agent.role.displayName === role);
-            
-            return agentsInRole;
+            const response = await axios.get(`${VALORANT_AGENT_API_ENDPOINT}?role=${maxRole}`);
+            const agentsInRole = response.data; // Contains data on agents for the specified role
+    
+            if (agentsInRole.length === 0) {
+                throw new Error(`No agents found for the role: ${maxRole}`);
+            }
+    
+            const randomAgent = agentsInRole[Math.floor(Math.random() * agentsInRole.length)];
+    
+            return randomAgent;
         } catch (error) {
-            throw new Error('Error fetching Valorant agent data');
+            throw new Error('Error fetching recommended agent');
         }
     }
     
-    async function calcRecommendations(req, res) {
-      const { role } = req.body; // Get the role from the request body
-    
-      try {
-        // Fetch agents from the Valorant API based on the specified role
-        const agents = await fetchAgentsByRole(role);
-    
-        // Randomly select an agent from the retrieved agents
-        const randomAgent = agents[Math.floor(Math.random() * agents.length)];
-    
-        // Now can use the "randomAgent" data as needed
-    
-        res.json(randomAgent);
-      } catch (error) {
-        console.error('Error calculating recommendations:', error);
-        res.status(500).json({ error: 'Internal server error' });
-      }
-    }
