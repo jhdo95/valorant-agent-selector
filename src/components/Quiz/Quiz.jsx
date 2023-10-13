@@ -1,37 +1,33 @@
-import { useState } from 'react';
-import { fetchQuizQuestions } from '../../utilities/quizzes-api';
 
-export default function Quiz({ quizData, onAnswer, onNext, currentQuestion }) {
-    const handleAnswer = (question, answer) => {
-      onAnswer(question, answer);
-    };
-  
-    const renderQuestion = () => {
-      const question = quizData[currentQuestion];
-      return (
-        <div>
-          <h2>Question {currentQuestion + 1}: {question.question}</h2>
-          <ul>
-            {question.choices.map((choice, index) => (
-              <li key={index}>
-                <button
-                  onClick={() => handleAnswer(question.question, choice)}
-                >
-                  {choice}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      );
-    };
-  
+export default function Quiz({ quizData, currentQuestion, onAnswer, onNext, onPrevious, answers }) {
+    const question = quizData[currentQuestion];
+    const selectedAnswer = answers[question] || null;
+
     return (
-      <div>
-        {renderQuestion()}
-        <button onClick={onNext}>
-          {currentQuestion < quizData.length - 1 ? 'Next' : 'Finish'}
-        </button>
-      </div>
+        <div>
+            <h2>{question.question}</h2>
+            <div>
+                {question.choices.map((choice, index) => (
+                    <div key={index}>
+                        <label>
+                            <input
+                                type="radio"
+                                name="answer"
+                                value={choice.text}
+                                checked={selectedAnswer === choice.text}
+                                onChange={() => onAnswer(question, choice)}
+                            />
+                            {choice.text}
+                        </label>
+                    </div>
+                ))}
+            </div>
+            <button onClick={onPrevious} disabled={currentQuestion === 0}>
+                Previous
+            </button>
+            <button onClick={onNext}>
+                {currentQuestion === quizData.length - 1 ? 'Finish' : 'Next'}
+            </button>
+        </div>
     );
-  }
+}

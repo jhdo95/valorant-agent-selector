@@ -1,0 +1,207 @@
+[
+  {
+    "question": "In a video game, what is your preferred playstyle?",
+    "choices": [
+      {
+        "text": "Aggressive and looking for eliminations",
+        "rolePoints": {
+          "initiator": 1,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Strategic and controlling the map",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 1,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Defensive and supporting the team",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 1,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Versatile and adapting to the situation",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 1
+        }
+      }
+    ]
+  },
+  {
+    "question": "How do you like to approach enemy encounters?",
+    "choices": [
+      {
+        "text": "Rush in head-on, taking on multiple enemies",
+        "rolePoints": {
+          "initiator": 1,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Keep a balanced distance, controlling sightlines",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 1,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Hold positions and protect your teammates",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 1,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Change tactics based on the situation",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 1
+        }
+      }
+    ]
+  },
+  {
+    "question": "What's your preferred role in a team-based game?",
+    "choices": [
+      {
+        "text": "Slayer, focused on getting eliminations",
+        "rolePoints": {
+          "initiator": 1,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Controller, managing map control",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 1,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Defender, guarding key areas",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 1,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Flex player, adapting as needed",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 1
+        }
+      }
+    ]
+  },
+  {
+    "question": "How do you react under pressure?",
+    "choices": [
+      {
+        "text": "Embrace it and look for opportunities to shine",
+        "rolePoints": {
+          "initiator": 1,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Stay calm and rely on strategic positioning",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 1,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Keep a cool head and defend your position",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 1,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Quickly adjust your strategy to overcome challenges",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 1
+        }
+      }
+    ]
+  },
+  {
+    "question": "Which of the following weapons do you prefer in a game?",
+    "choices": [
+      {
+        "text": "High-damage rifles and shotguns",
+        "rolePoints": {
+          "initiator": 1,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Precise snipers and control weapons",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 1,
+          "sentinel": 0,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Reliable pistols and SMGs",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 1,
+          "duelist": 0
+        }
+      },
+      {
+        "text": "Versatile weapons that suit different situations",
+        "rolePoints": {
+          "initiator": 0,
+          "controller": 0,
+          "sentinel": 0,
+          "duelist": 1
+        }
+      }
+    ]
+  }
+]

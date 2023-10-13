@@ -1,4 +1,3 @@
-// send-request.js
 
 import { getToken } from "./users-service";
 

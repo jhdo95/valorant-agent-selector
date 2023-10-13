@@ -6,7 +6,6 @@ export default function ValorantAgents() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Make an API request to fetch Valorant agent data
     axios.get('https://valorant-api.com/v1/agents')
       .then((response) => {
         console.log('API Response:', response);
@@ -25,7 +24,6 @@ export default function ValorantAgents() {
 
   return (
     <div>
-      <h1>Valorant Agents</h1>
       {agents.map((agent) => (
         <div key={agent.uuid}>
           <h3>{agent.displayName}</h3>

@@ -2,26 +2,27 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const quizSchema = new Schema({
-    question: {
-      type: String,
-      required: true,
-    },
-    choices: [
-      {
-        type: String,
-        required: true,
-      },
+    questions: [
+        {
+            question: {
+                type: String,
+                required: true,
+            },
+            choices: [
+                {
+                    text: {
+                        type: String,
+                        required: true,
+                    },
+                    rolePoints: {
+                        initiator: Number, 
+                        controller: Number, 
+                        sentinel: Number, 
+                        duelist: Number, // Points for the Duelist role
+                    },
+                },
+            ],
+        },
     ],
-    
-    role: {
-      type: String,
-      required: true,
-    },
-   
-    selectedAgent: {
-      type: Object,  
-      default: null, // Initialize as null until an agent is selected
-    },
-  });
-
+});
     module.exports = mongoose.model('Quiz', quizSchema);

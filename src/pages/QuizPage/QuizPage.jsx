@@ -1,112 +1,79 @@
-import { useState, useEffect } from 'react';
-import { fetchQuizQuestions } from '../../utilities/quizzes-api';
+import { useState } from 'react';
 import Quiz from '../../components/Quiz/Quiz';
+import quizData from '../../data/quizQuestions.json';
 
 export default function QuizPage() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState({});
-    const [quizData, setQuizData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [rolePoints, setRolePoints] = useState({
+        initiator: 0,
+        controller: 0,
+        sentinel: 0,
+        duelist: 0,
+    });
+    const [answeredQuestions, setAnsweredQuestions] = useState([]); // New state to keep track of answered questions
 
-    // Add state for new question and choices
-  const [newQuestion, setNewQuestion] = useState('');
-  const [newChoices, setNewChoices] = useState('');
-  
-    useEffect(() => {
-      const fetchQuestions = async () => {
-        try {
-          const data = await fetchQuizQuestions();
-          setQuizData(data);
-          setLoading(false);
-        } catch (error) {
-          // Handle errors as needed
-        }
-      };
-  
-      fetchQuestions();
-    }, []);
-  
     const handleAnswer = (question, answer) => {
-      setAnswers({ ...answers, [question]: answer });
+        if (answeredQuestions.includes(question)) {
+            console.log('Question already answered:', question);
+            return;
+        }
+
+
+        if (!answer || !answer.rolePoints) {
+            console.error('Answer object is invalid or does not contain rolePoints');
+            console.log('Answer:', answer);
+            return;
+        }
+    
+        const updatedAnswers = { ...answers };
+        updatedAnswers[question] = answer;
+        setAnswers(updatedAnswers);
+    
+        const updatedRolePoints = { ...rolePoints };
+        Object.keys(answer.rolePoints).forEach((role) => {
+            if (updatedRolePoints[role] !== undefined) {
+                updatedRolePoints[role] += answer.rolePoints[role];
+            }
+        });
+    
+        console.log('Updated role points:', updatedRolePoints);
+    
+        setRolePoints(updatedRolePoints);
+         // Add the question to the list of answered questions
+        setAnsweredQuestions([...answeredQuestions, question]);
     };
-  
+
     const handleNext = () => {
-      if (currentQuestion < quizData.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
-      } else {
-        console.log('User Answers:', answers);
-      }
+        if (currentQuestion < quizData.length - 1) {
+            setCurrentQuestion(currentQuestion + 1);
+        } else {
+            console.log('User Answers:', answers);
+            console.log('Role Points:', rolePoints);
+        }
     };
-// Handle form submission to add a new question
-const handleAddQuestion = async () => {
-    // Create an object for the new question
-    const newQuestionData = {
-      question: newQuestion,
-      choices: newChoices,
+    const handlePrevious = () => {
+        if (currentQuestion > 0) {
+            setCurrentQuestion(currentQuestion - 1);
+        }
     };
 
-    // Send a POST request to add the new question
-    try {
-      const response = await fetch('/api/quizzes/questions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newQuestionData),
-      });
-
-      if (response.ok) {
-        // Question added successfully, you can handle this as needed
-        // Clear the form inputs
-        setNewQuestion('');
-        setNewChoices([]);
-      } else {
-        console.error('Failed to add question');
-      }
-    } catch (error) {
-      console.error('Error adding question:', error);
-    }
-  };
-
-  return (
-    <div>
-      {loading ? (
-        <p>Loading quiz questions...</p>
-      ) : (
+    return (
         <div>
-          {quizData.length > 0 ? (
-            <Quiz
-              quizData={quizData}
-              currentQuestion={currentQuestion}
-              onAnswer={handleAnswer}
-              onNext={handleNext}
-            />
-          ) : (
-            <p>No questions available.</p>
-          )}
-          <form>
-            <label>
-              New Question:
-              <input
-                type="text"
-                value={newQuestion}
-                onChange={(e) => setNewQuestion(e.target.value)}
-              />
-            </label>
-            <label>
-            New Choices (comma-separated):
-            <input
-                type="text"
-                value={newChoices}
-                onChange={(e) => setNewChoices(e.target.value)}
-            />
-            </label>
-            <button type="submit" onClick={handleAddQuestion}>
-              Add Question
-            </button>
-          </form>
+            <div>
+                {quizData.length > 0 ? (
+                    <Quiz
+                        quizData={quizData}
+                        currentQuestion={currentQuestion}
+                        onAnswer={handleAnswer}
+                        onNext={handleNext}
+                        onPrevious={handlePrevious} // Make sure to pass the handlePrevious function to the Quiz component
+                        answers={answers}
+                    />
+                ) : (
+                    <p>No questions available.</p>
+                )}
+            </div>
         </div>
-      )}
-    </div>
-  );
+    );
 }
