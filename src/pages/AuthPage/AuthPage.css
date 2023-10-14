@@ -1,0 +1,27 @@
+.AuthPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://i.imgur.com/cBAvZAh.jpg'); /* Set the wallpaper image URL here */
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    text-align: center;
+}
+.AuthButton {
+    background-color: #006aff;
+    border: 1px solid #e7e2dd;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+.AuthButton:hover {
+    background-color: #0088ff;
+    color: #ffffff;
+  }
