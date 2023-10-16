@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    color: #fff;
+    border-bottom: 2px solid #fff; /* Add a border at the bottom */
+}
+
+.navbar__user {
+    font-weight: bold;
+    padding: 5px;
+    margin-right: 10px;
+}
+  
+  .navbar__links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar__link {
+    padding: 10px;
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: border 0.3s;
+  }
+  
+  .navbar__link:hover {
+    border: 2px solid #fff;
+  }
+  
+  .navbar__logout-btn {
+    padding: 8px 16px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .navbar__logout-btn:hover {
+    background-color: #d32f2f;
+  }

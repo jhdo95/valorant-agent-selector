@@ -1,0 +1,60 @@
+.agents-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .agent-container {
+    width: 300px;
+    padding: 20px;
+    background-color: #f222;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .agent-container h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .agent-container p {
+    font-size: 16px;
+    margin: 0; 
+    padding: 0; 
+    min-height: 6em;
+  }
+  
+  .agent-image {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .agent-container h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .agent-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .agent-container li {
+    margin-bottom: 5px;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .ability-icon {
+    width: 10vh;
+    height: 10vh;
+    margin-left: 5px;
+  }

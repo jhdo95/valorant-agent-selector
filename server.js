@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const axios = require('axios');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 
@@ -24,6 +23,7 @@ app.use(require('./config/checkToken'));
 const port = process.env.PORT || 3001;
 
 // Put API routes here, before the "catch all" route
+
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/quizzes', require('./routes/api/quizzes'));
 app.use('/api/valorant', require('./routes/api/valorant') )

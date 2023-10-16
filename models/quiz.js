@@ -18,7 +18,7 @@ const quizSchema = new Schema({
                         initiator: Number, 
                         controller: Number, 
                         sentinel: Number, 
-                        duelist: Number, // Points for the Duelist role
+                        duelist: Number, 
                     },
                 },
             ],

@@ -1,0 +1,73 @@
+#root {
+    background-image: url('https://i.imgur.com/XVOGQcI.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.quiz-container {
+    width: 100%vh;
+    margin: auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.question {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.choices {
+    display: flex;
+    flex-direction: column;
+}
+
+.choice {
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.quiz-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #f67f00;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quiz-button:hover {
+    background-color: #ff9933;
+}
+
+.quiz-button:disabled {
+    background-color: #d3c1ae;
+    cursor: not-allowed;
+}
+
+.recommended-agent-container {
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.recommended-agent-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.recommended-agent-info {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.ability {
+    margin-bottom: 15px;
+}

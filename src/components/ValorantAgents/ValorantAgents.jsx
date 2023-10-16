@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import './ValorantAgents.css';
 
 export default function ValorantAgents() {
   const [agents, setAgents] = useState([]);
@@ -23,22 +24,26 @@ export default function ValorantAgents() {
   }
 
   return (
-    <div>
+    <div className="agents-container">
       {agents.map((agent) => (
-        <div key={agent.uuid}>
+        <div key={agent.uuid} className="agent-container">
           <h3>{agent.displayName}</h3>
           <p>{agent.description}</p>
-          <img src={agent.displayIcon} alt={agent.displayName} />
+          <img src={agent.displayIcon} alt={agent.displayName} className="agent-image" />
           <h4>Abilities:</h4>
           <ul>
             {agent.abilities.map((ability, index) => (
               <li key={index}>
-                <strong>{ability.displayName}:</strong> {ability.description}
+                <div className="ability-description">
+                  <strong>{ability.displayName}:</strong> {ability.description}
+                </div>
+                {ability.displayIcon && (
+                  <img src={ability.displayIcon} alt={ability.displayName} className="ability-icon" />
+                )}
               </li>
             ))}
           </ul>
         </div>
       ))}
     </div>
-  );
-}
+  )};

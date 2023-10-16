@@ -5,31 +5,40 @@ export default function RecommendedAgent({ role }) {
     const [recommendedAgent, setRecommendedAgent] = useState(null);
 
     useEffect(() => {
-      const getRecommendedAgent = async () => {
-        try {
-          const agent = await fetchSelectedAgent(role);
-          setRecommendedAgent(agent);
-        } catch (error) {
-          console.error('Error fetching recommended agent:', error);
-        }
-      };
-      getRecommendedAgent();
+        const getSelectedAgent = async () => {
+            try {
+                const response = await fetchSelectedAgent(role);
+                console.log('Recommended Agent:', response.data);
+                setRecommendedAgent(response.data);
+            } catch (error) {
+                console.error('Error fetching recommended agent:', error);
+            }
+        };
+        getSelectedAgent();
     }, [role]);
-  
+
     if (!recommendedAgent) {
-      return <div>Loading...</div>;
+        return <div>Loading...</div>;
     }
-  
+
     return (
-      <div>
-        <h2>Recommended Agent: {recommendedAgent.name}</h2>
-        <p>{recommendedAgent.description}</p>
-        <h3>Abilities:</h3>
-        <ul>
-          {recommendedAgent.abilities.map((ability, index) => (
-            <li key={index}>{ability}</li>
-          ))}
-        </ul>
-      </div>
+        <div className="recommended-agent-container">
+            <h3>Recommended Agent</h3>
+            <p className="agent-name">Name: {recommendedAgent.displayName}</p>
+            <p className="agent-description">Description: {recommendedAgent.description}</p>
+            <img className="agent-image" src={recommendedAgent.displayIcon} alt={recommendedAgent.displayName} />
+            <h4>Abilities:</h4>
+            <ul className="abilities-list">
+                {recommendedAgent.abilities.map((ability, index) => (
+                    <li key={index} className="ability-item">
+                        <p className="ability-name">Ability {index + 1}:</p>
+                        <p className="ability-displayName">{ability.displayName}</p>
+                        <p className="ability-description">Description: {ability.description}</p>
+                        {ability.displayIcon && <img className="ability-icon" src={ability.displayIcon} alt={ability.displayName} />}
+                    </li>
+                ))}
+            </ul>
+            <button className="pick-another-button" onClick={() => setRecommendedAgent(null)}>Pick Another Agent</button>
+        </div>
     );
-  }
+};
