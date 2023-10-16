@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useState } from 'react';
+import * as quizzesAPI from '../../utilities/quizzes-api';
 import './Quiz.css';
 
 
@@ -9,7 +9,7 @@ export default function Quiz({ quizData, currentQuestion, onAnswer, onNext, onPr
     const selectedAnswer = answers[question] || null;
 
     const handleFinish = async () => {
-        const calculatedRolePoints = { ...rolePoints }; // Use the passed rolePoints directly
+        const calculatedRolePoints = { ...rolePoints }; 
         Object.values(answers).forEach(answer => {
             if (answer.rolePoints) {
                 Object.keys(answer.rolePoints).forEach(role => {
@@ -28,11 +28,9 @@ export default function Quiz({ quizData, currentQuestion, onAnswer, onNext, onPr
             }
         });
         try {
-            const response = await axios.post('/api/quizzes/calcRecommendations', {
-                role: maxRole,
-            });
-            console.log('Recommended Agent:', response.data);
-            setRecommendedAgent(response.data);
+            const recommendedAgentData = await quizzesAPI.calcRecommendations(maxRole, answers);
+            setRecommendedAgent(recommendedAgentData);
+            
         } catch (error) {
             console.error('Error fetching recommended agent:', error);
         }

@@ -68,6 +68,60 @@ input[type="radio"] {
     margin-bottom: 10px;
 }
 
+.agent-image {
+    max-width: 50%; 
+    height: auto; 
+    display: block; 
+    margin: 20px auto; 
+}
+
 .ability {
     margin-bottom: 15px;
+}
+
+.abilities-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+.previous-button,
+.next-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.previous-button:hover,
+.next-button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.pick-another-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.pick-another-button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
 }

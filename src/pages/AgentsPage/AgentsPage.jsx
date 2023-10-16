@@ -1,4 +1,5 @@
 import ValorantAgents from '../../components/ValorantAgents/ValorantAgents';
+import './AgentsPage';
 
 export default function AgentsPage() {
     return (

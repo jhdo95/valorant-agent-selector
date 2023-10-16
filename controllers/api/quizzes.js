@@ -1,17 +1,17 @@
 const axios = require('axios');
 const Quiz = require('../../models/quiz');
+const VALORANT_AGENT_API_ENDPOINT = 'https://valorant-api.com/v1/agents';
 
 module.exports = {
     index,
     calcRecommendations,
 };
-const VALORANT_AGENT_API_ENDPOINT = 'https://valorant-api.com/v1/agents';
+
 
 async function index(req, res) {
       const questions = await Quiz.find();
       res.json(questions);
   }
-
 
 async function calcRecommendations(req, res) {
 try {
