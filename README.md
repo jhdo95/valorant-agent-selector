@@ -34,7 +34,8 @@ Getting Started: https://valorant-agent-selector-b4f3e0175a4a.herokuapp.com/
 
 
 ## Future Enhancements
-*  Add the ability for users to see a clip of agent's abilities in the test completion and in the index page.
-* Add a tips/tricks section for each agent personalized by yours truly.
-* Get authorized to use the official Valorant API for the most up to date information.
-* Add a stat tracker for users to login/link their account and view how their playing.
+-  Add the ability for users to see a clip of agent's abilities in the test completion and in the index page.
+- Add a tips/tricks section for each agent personalized by yours truly.
+- Get authorized to use the official Valorant API for the most up to date information.
+- Add a stat tracker for users to login/link their account and view how their playing.
+- Update the quiz questions to allow for dynamic agent selection.
